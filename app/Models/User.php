@@ -12,12 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
+    protected $table = 'users';
     protected $fillable = [
         'name',
         'email',
         'password',
         'role',
+        'foto'
     ];
 
     protected $hidden = [
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public $timestamps = 'false';
     /**
      * The attributes that should be cast.
      *

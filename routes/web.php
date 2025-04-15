@@ -6,6 +6,8 @@ use App\Http\Controllers\ViewerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\apiregiscontroller;
+use App\Http\Controllers\storageController;
+use App\Http\Controllers\LaporanController;
 
 
 
@@ -49,5 +51,15 @@ Route::middleware(['auth'])->group(function () {
 });
 // Load routes untuk autentikasi
 require __DIR__.'/auth.php';
+
+//menampilkan halaman
+Route::get('/storage1', [storageController::class, 'index'])->name('storage.index');
+//untuk menyimpan data
+Route::post('/storage2', [storageController::class, 'store'])->name('file.upload');
+
+//pdf
+// Route::get('/laporan-pdf', [LaporanController::class, 'generatePDF']);
+Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
+Route::get('/laporanpdf', [LaporanController::class, 'generatePDF'])->name('laporan.pdf');
 
 
